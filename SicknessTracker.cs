@@ -7,7 +7,6 @@ public class SicknessTracker : MonoBehaviour
 {
     [SerializeField] private GameObject m_SickCanvas;
     [SerializeField] private GameObject m_ScoreDisplayFollow;
-    [SerializeField] private GameObject m_Stimulus_Canvas;
 
     private GameObject m_SicknessHUD;
     private GameObject m_FPSControllerVRAvatar;
@@ -56,7 +55,6 @@ public class SicknessTracker : MonoBehaviour
         v_spawnRotation.z = 1;
 
         m_ScoreDisplayFollow.SetActive(false);
-        m_Stimulus_Canvas.SetActive(false);
 
         if (m_FPSControllerVRAvatar.GetComponent<AddNoise2>().testingMode == true)
         {
@@ -121,15 +119,6 @@ public class SicknessTracker : MonoBehaviour
                 }
             }
         }
-        if ( inputNumber%2  == 0)
-        {
-            m_Stimulus_Canvas.SetActive(true);
-        }
-        else
-        {
-            m_Stimulus_Canvas.SetActive(false);
-        }
-        
         if (inputNumber + 1 == maxInputs && !finalSpawn && !HUDCallComplete)
         {
             m_ScoreDisplayFollow.SetActive(true);
