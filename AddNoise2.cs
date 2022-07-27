@@ -351,6 +351,7 @@ public class AddNoise2 : MonoBehaviour
             if (shoveCounter > 0)
             {
                 noiseSpeed = parameter;
+                // applies the parameters 
                 doShove(xNoise, yNoise, zNoise, noiseSpeed);
                 shoveCounter--;          
 
@@ -368,7 +369,7 @@ public class AddNoise2 : MonoBehaviour
     }
 
     /// <summary>
-    /// Applies the orientatino and amplitude parameters to the stimulus 
+    /// Applies the orientation and amplitude parameters to the stimulus 
     /// </summary>
     void doShove(float x, float y, float z, float s)
     {
@@ -379,7 +380,10 @@ public class AddNoise2 : MonoBehaviour
         m_FirstPersonController.noiseSpeed = s;
 
         // Magnitude of the show vector
-        m_FirstPersonController.noiseAmp = Mathf.Sqrt((m_FirstPersonController.xNoise * m_FirstPersonController.xNoise) + (m_FirstPersonController.yNoise * m_FirstPersonController.yNoise) + (m_FirstPersonController.zNoise * m_FirstPersonController.zNoise));
+        m_FirstPersonController.noiseAmp = Mathf.Sqrt((m_FirstPersonController.xNoise * 
+                m_FirstPersonController.xNoise) + 
+            (m_FirstPersonController.yNoise * m_FirstPersonController.yNoise) + 
+            (m_FirstPersonController.zNoise * m_FirstPersonController.zNoise));
 
         if (m_FirstPersonController.noiseAmp != 0)
         {
@@ -412,7 +416,8 @@ public class AddNoise2 : MonoBehaviour
     {
         for (int k = 0; k < v_xNoise.Length; k++)
         {
-           string newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", x_position[k], y_position[k], z_position[k], v_noiseSpeed[k], framesPerShove, v_xNoise[k], v_yNoise[k], v_zNoise[k], v_noiseAmp[k]); //v_framesUntilChange[k]
+           string newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", x_position[k], y_position[k], 
+               z_position[k], v_noiseSpeed[k], framesPerShove, v_xNoise[k], v_yNoise[k], v_zNoise[k], v_noiseAmp[k]); 
            csvBuilder.AppendLine(newLine);
         }
         
